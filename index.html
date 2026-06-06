@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Record Management System</h1>
+        <div class="auth-section">
+            <span id="status">Viewing as: <strong>Public</strong></span>
+            <button id="loginBtn">Admin Login</button>
+            <button id="logoutBtn" class="hidden">Logout</button>
+        </div>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('vouchers')">Vouchers</button>
+        <button class="tab-btn" onclick="showTab('ledger')">Deposits & Expenses</button>
+    </div>
+
+    <main>
+        <section id="vouchers" class="tab-content active">
+            <h2>Voucher Records</h2>
+            <div id="adminVoucherControls" class="admin-only hidden">
+                <input type="date" id="voucherDate">
+                <input type="file" id="voucherFile">
+                <button class="action-btn">Upload Voucher</button>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>File Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2026-06-05</td>
+                        <td>internet_bill.pdf</td>
+                        <td>
+                            <button class="view-btn">View/Download</button>
+                            <button class="delete-btn admin-only hidden">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="ledger" class="tab-content hidden">
+            <h2>Deposits & Expenses</h2>
+            <div id="adminLedgerControls" class="admin-only hidden">
+                <input type="date" id="ledgerDate">
+                <select id="ledgerType">
+                    <option value="Deposit">Deposit</option>
+                    <option value="Expense">Expense</option>
+                </select>
+                <input type="number" placeholder="Amount" id="ledgerAmount">
+                <input type="text" placeholder="Description" id="ledgerDesc">
+                <button class="action-btn">Add Entry</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th class="admin-only hidden">Admin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2026-06-01</td>
+                        <td>Deposit</td>
+                        <td>Monthly Budget</td>
+                        <td>$500.00</td>
+                        <td class="admin-only hidden">
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
